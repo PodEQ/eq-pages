@@ -1,0 +1,412 @@
+<div class="row-fluid marketing">
+    <div class="uk-overflow-container">
+
+        <h2>Das Podcastarchiv: <span class="portal">{{@feedattr.slug}}</span></h2>
+        <hr>
+        <p>Dies sind alle bisher erschienenen Ausgaben von {{@feedattr.title}}. Bisher gibt es <b>{{sizeof(@items)}}</b>
+            <check if="{{sizeof(@items)}}>1">
+                <true> Episoden.</true>
+                <false> Episode.</false>
+            </check>
+        </p>
+
+        <table class="uk-table uk-table-striped">
+            <thead>
+            <tr>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <repeat group="@items" value="{{@item}}">
+                <tr>
+                    <td style="width:70px;">
+                        <div style="padding: 5px;">
+                            <a href="/{{@feedattr.slug}}/show/{{@item.slug}}"
+                               name="{{@item.slug}}"><img
+                                    class="media-object pull-left"
+                                    src="{{@item.image}}"></a>
+                        </div>
+                    </td>
+                    <td class="uk-text-middle">
+                        <div style="padding: 5px;">
+                            <b><a class="uk-text-middle" href="/{{@feedattr.slug}}/show/{{@item.slug}}"
+                                  name="{{@item.slug}}">{{@item.title}}</a></b></br>
+                            <span>{{@item.description}}</span>
+                        </div>
+                        <div style="padding: 5px;">
+                            <small>
+                                Vom: {{@dict_pubdate,strtotime(@item.pubDate) | format}} |
+                                <check if="{{@item.duration}}">{{@dict_duration}}: {{@item.duration}}</check>
+                            </small>
+                        </div>
+                        <div style="padding: 5px;">
+                            <check if="{{isset(@item.newsContri_data)}}">
+                                <true>
+                                    <repeat group="{{@item.newsContri_data}}" value="{{@con}}" key="{{@nick}}">
+                                        <check if="{{isset(@con.image)}}">
+                                            <true>
+                                                <check if="{{isset(@con.url)}}">
+                                                    <true>
+                                                        <a title="Das ist {{@con.name}}" alt="Blog von {{@con.name}}"
+                                                           href="{{@con.url}}"><img style="width:25px;"
+                                                                                    alt="Das ist {{@con.name}}"
+                                                                                    src="{{@con.image}}"></a>
+                                                    </true>
+                                                    <false>
+                                                        <img style="width:25px;" alt="Das ist {{@con.name}}"
+                                                             src="{{@con.image}}">
+                                                    </false>
+                                                </check>
+                                            </true>
+                                            <false>
+                                                <check if="{{isset(@con.url)}}">
+                                                    <true>
+                                                        <a title="Das ist {{@con.name}}" alt="Blog von {{@con.name}}"
+                                                           href="{{@con.url}}"><img
+                                                                alt="Leider hat {{@con.name}} kein Avatar"
+                                                                style="width:25px;"
+                                                                src="{{@BASEURL}}/ext/{{@feedattr.slug}}Contri/avatar.png"></a>
+                                                    </true>
+                                                    <false>
+                                                        <img alt="Leider hat {{@con.name}} kein Avatar"
+                                                             style="width:25px;"
+                                                             src="{{@BASEURL}}/ext/{{@feedattr.slug}}Contri/avatar.png">
+                                                    </false>
+                                                </check>
+                                            </false>
+                                        </check>
+                                    </repeat>
+                                </true>
+                            </check>
+                            <check if="{{isset(@item.technikContri_data)}}">
+                                <true>
+                                    <repeat group="{{@item.technikContri_data}}" value="{{@con}}" key="{{@nick}}">
+
+                                        <check if="{{isset(@con.image)}}">
+                                            <true>
+                                                <check if="{{isset(@con.url)}}">
+                                                    <true>
+                                                        <a title="Das ist {{@con.name}}" alt="Blog von {{@con.name}}"
+                                                           href="{{@con.url}}"><img style="width:25px;"
+                                                                                    alt="Das ist {{@con.name}}"
+                                                                                    src="{{@con.image}}"></a>
+                                                    </true>
+                                                    <false>
+                                                        <img style="width:25px;" alt="Das ist {{@con.name}}"
+                                                             src="{{@con.image}}">
+                                                    </false>
+                                                </check>
+                                            </true>
+                                            <false>
+                                                <check if="{{isset(@con.url)}}">
+                                                    <true>
+                                                        <a title="Das ist {{@con.name}}" alt="Blog von {{@con.name}}"
+                                                           href="{{@con.url}}"><img
+                                                                alt="Leider hat {{@con.name}} kein Avatar"
+                                                                style="width:25px;"
+                                                                src="{{@BASEURL}}/ext/{{@feedattr.slug}}Contri/avatar.png"></a>
+                                                    </true>
+                                                    <false>
+                                                        <img alt="Leider hat {{@con.name}} kein Avatar"
+                                                             style="width:25px;"
+                                                             src="{{@BASEURL}}/ext/{{@feedattr.slug}}Contri/avatar.png">
+                                                    </false>
+                                                </check>
+                                            </false>
+                                        </check>
+                                    </repeat>
+                                </true>
+                            </check>
+                            <check if="{{isset(@item.wissenschaftContri_data)}}">
+                                <true>
+                                    <repeat group="{{@item.wissenschaftContri_data}}" value="{{@con}}" key="{{@nick}}">
+
+                                        <check if="{{isset(@con.image)}}">
+                                            <true>
+                                                <check if="{{isset(@con.url)}}">
+                                                    <true>
+                                                        <a title="Das ist {{@con.name}}" alt="Blog von {{@con.name}}"
+                                                           href="{{@con.url}}"><img style="width:25px;"
+                                                                                    alt="Das ist {{@con.name}}"
+                                                                                    src="{{@con.image}}"></a>
+                                                    </true>
+                                                    <false>
+                                                        <img style="width:25px;" alt="Das ist {{@con.name}}"
+                                                             src="{{@con.image}}">
+                                                    </false>
+                                                </check>
+                                            </true>
+                                            <false>
+                                                <check if="{{isset(@con.url)}}">
+                                                    <true>
+                                                        <a title="Das ist {{@con.name}}" alt="Blog von {{@con.name}}"
+                                                           href="{{@con.url}}"><img
+                                                                alt="Leider hat {{@con.name}} kein Avatar"
+                                                                style="width:25px;"
+                                                                src="{{@BASEURL}}/ext/{{@feedattr.slug}}Contri/avatar.png"></a>
+                                                    </true>
+                                                    <false>
+                                                        <img alt="Leider hat {{@con.name}} kein Avatar"
+                                                             style="width:25px;"
+                                                             src="{{@BASEURL}}/ext/{{@feedattr.slug}}Contri/avatar.png">
+                                                    </false>
+                                                </check>
+                                            </false>
+                                        </check>
+                                    </repeat>
+                                </true>
+                            </check>
+                            <check if="{{isset(@item.interviewsContri_data)}}">
+                                <true>
+                                    <repeat group="{{@item.interviewsContri_data}}" value="{{@con}}" key="{{@nick}}">
+
+                                        <check if="{{isset(@con.image)}}">
+                                            <true>
+                                                <check if="{{isset(@con.url)}}">
+                                                    <true>
+                                                        <a title="Das ist {{@con.name}}" alt="Blog von {{@con.name}}"
+                                                           href="{{@con.url}}"><img style="width:25px;"
+                                                                                    alt="Das ist {{@con.name}}"
+                                                                                    src="{{@con.image}}"></a>
+                                                    </true>
+                                                    <false>
+                                                        <img style="width:25px;" alt="Das ist {{@con.name}}"
+                                                             src="{{@con.image}}">
+                                                    </false>
+                                                </check>
+                                            </true>
+                                            <false>
+                                                <check if="{{isset(@con.url)}}">
+                                                    <true>
+                                                        <a title="Das ist {{@con.name}}" alt="Blog von {{@con.name}}"
+                                                           href="{{@con.url}}"><img
+                                                                alt="Leider hat {{@con.name}} kein Avatar"
+                                                                style="width:25px;"
+                                                                src="{{@BASEURL}}/ext/{{@feedattr.slug}}Contri/avatar.png"></a>
+                                                    </true>
+                                                    <false>
+                                                        <img alt="Leider hat {{@con.name}} kein Avatar"
+                                                             style="width:25px;"
+                                                             src="{{@BASEURL}}/ext/{{@feedattr.slug}}Contri/avatar.png">
+                                                    </false>
+                                                </check>
+                                            </false>
+                                        </check>
+                                    </repeat>
+                                </true>
+                            </check>
+                            <check if="{{isset(@item.gamesContri_data)}}">
+                                <true>
+                                    <repeat group="{{@item.gamesContri_data}}" value="{{@con}}" key="{{@nick}}">
+
+                                        <check if="{{isset(@con.image)}}">
+                                            <true>
+                                                <check if="{{isset(@con.url)}}">
+                                                    <true>
+                                                        <a title="Das ist {{@con.name}}" alt="Blog von {{@con.name}}"
+                                                           href="{{@con.url}}"><img style="width:25px;"
+                                                                                    alt="Das ist {{@con.name}}"
+                                                                                    src="{{@con.image}}"></a>
+                                                    </true>
+                                                    <false>
+                                                        <img style="width:25px;" alt="Das ist {{@con.name}}"
+                                                             src="{{@con.image}}">
+                                                    </false>
+                                                </check>
+                                            </true>
+                                            <false>
+                                                <check if="{{isset(@con.url)}}">
+                                                    <true>
+                                                        <a title="Das ist {{@con.name}}" alt="Blog von {{@con.name}}"
+                                                           href="{{@con.url}}"><img
+                                                                alt="Leider hat {{@con.name}} kein Avatar"
+                                                                style="width:25px;"
+                                                                src="{{@BASEURL}}/ext/{{@feedattr.slug}}Contri/avatar.png"></a>
+                                                    </true>
+                                                    <false>
+                                                        <img alt="Leider hat {{@con.name}} kein Avatar"
+                                                             style="width:25px;"
+                                                             src="{{@BASEURL}}/ext/{{@feedattr.slug}}Contri/avatar.png">
+                                                    </false>
+                                                </check>
+                                            </false>
+                                        </check>
+                                    </repeat>
+                                </true>
+                            </check>
+                            <check if="{{isset(@item.humorContri_data)}}">
+                                <true>
+                                    <repeat group="{{@item.humorContri_data}}" value="{{@con}}" key="{{@nick}}">
+
+                                        <check if="{{isset(@con.image)}}">
+                                            <true>
+                                                <check if="{{isset(@con.url)}}">
+                                                    <true>
+                                                        <a title="Das ist {{@con.name}}" alt="Blog von {{@con.name}}"
+                                                           href="{{@con.url}}"><img style="width:25px;"
+                                                                                    alt="Das ist {{@con.name}}"
+                                                                                    src="{{@con.image}}"></a>
+                                                    </true>
+                                                    <false>
+                                                        <img style="width:25px;" alt="Das ist {{@con.name}}"
+                                                             src="{{@con.image}}">
+                                                    </false>
+                                                </check>
+                                            </true>
+                                            <false>
+                                                <check if="{{isset(@con.url)}}">
+                                                    <true>
+                                                        <a title="Das ist {{@con.name}}" alt="Blog von {{@con.name}}"
+                                                           href="{{@con.url}}"><img
+                                                                alt="Leider hat {{@con.name}} kein Avatar"
+                                                                style="width:25px;"
+                                                                src="{{@BASEURL}}/ext/{{@feedattr.slug}}Contri/avatar.png"></a>
+                                                    </true>
+                                                    <false>
+                                                        <img alt="Leider hat {{@con.name}} kein Avatar"
+                                                             style="width:25px;"
+                                                             src="{{@BASEURL}}/ext/{{@feedattr.slug}}Contri/avatar.png">
+                                                    </false>
+                                                </check>
+                                            </false>
+                                        </check>
+                                    </repeat>
+                                </true>
+                            </check>
+                            <check if="{{isset(@item.bw5Contri_data)}}">
+                                <true>
+                                    <repeat group="{{@item.bw5Contri_data}}" value="{{@con}}" key="{{@nick}}">
+
+                                        <check if="{{isset(@con.image)}}">
+                                            <true>
+                                                <check if="{{isset(@con.url)}}">
+                                                    <true>
+                                                        <a title="Das ist {{@con.name}}" alt="Blog von {{@con.name}}"
+                                                           href="{{@con.url}}"><img style="width:25px;"
+                                                                                    alt="Das ist {{@con.name}}"
+                                                                                    src="{{@con.image}}"></a>
+                                                    </true>
+                                                    <false>
+                                                        <img style="width:25px;" alt="Das ist {{@con.name}}"
+                                                             src="{{@con.image}}">
+                                                    </false>
+                                                </check>
+                                            </true>
+                                            <false>
+                                                <check if="{{isset(@con.url)}}">
+                                                    <true>
+                                                        <a title="Das ist {{@con.name}}" alt="Blog von {{@con.name}}"
+                                                           href="{{@con.url}}"><img
+                                                                alt="Leider hat {{@con.name}} kein Avatar"
+                                                                style="width:25px;"
+                                                                src="{{@BASEURL}}/ext/{{@feedattr.slug}}Contri/avatar.png"></a>
+                                                    </true>
+                                                    <false>
+                                                        <img alt="Leider hat {{@con.name}} kein Avatar"
+                                                             style="width:25px;"
+                                                             src="{{@BASEURL}}/ext/{{@feedattr.slug}}Contri/avatar.png">
+                                                    </false>
+                                                </check>
+                                            </false>
+                                        </check>
+                                    </repeat>
+                                </true>
+                            </check>
+                            <check if="{{isset(@item.kulturContri_data)}}">
+                                <true>
+                                    <repeat group="{{@item.kulturContri_data}}" value="{{@con}}" key="{{@nick}}">
+
+                                        <check if="{{isset(@con.image)}}">
+                                            <true>
+                                                <check if="{{isset(@con.url)}}">
+                                                    <true>
+                                                        <a title="Das ist {{@con.name}}" alt="Blog von {{@con.name}}"
+                                                           href="{{@con.url}}"><img style="width:25px;"
+                                                                                    alt="Das ist {{@con.name}}"
+                                                                                    src="{{@con.image}}"></a>
+                                                    </true>
+                                                    <false>
+                                                        <img style="width:25px;" alt="Das ist {{@con.name}}"
+                                                             src="{{@con.image}}">
+                                                    </false>
+                                                </check>
+                                            </true>
+                                            <false>
+                                                <check if="{{isset(@con.url)}}">
+                                                    <true>
+                                                        <a title="Das ist {{@con.name}}" alt="Blog von {{@con.name}}"
+                                                           href="{{@con.url}}"><img
+                                                                alt="Leider hat {{@con.name}} kein Avatar"
+                                                                style="width:25px;"
+                                                                src="{{@BASEURL}}/ext/{{@feedattr.slug}}Contri/avatar.png"></a>
+                                                    </true>
+                                                    <false>
+                                                        <img alt="Leider hat {{@con.name}} kein Avatar"
+                                                             style="width:25px;"
+                                                             src="{{@BASEURL}}/ext/{{@feedattr.slug}}Contri/avatar.png">
+                                                    </false>
+                                                </check>
+                                            </false>
+                                        </check>
+                                    </repeat>
+                                </true>
+                            </check>
+                            <check if="{{isset(@item.contributors_data)}}">
+                                <true>
+                                    <repeat group="{{@item.contributors_data}}" value="{{@con}}" key="{{@nick}}">
+
+                                        <check if="{{isset(@con.image)}}">
+                                            <true>
+                                                <check if="{{isset(@con.url)}}">
+                                                    <true>
+                                                        <a title="Das ist {{@con.name}}" alt="Blog von {{@con.name}}"
+                                                           href="{{@con.url}}"><img style="width:25px;"
+                                                                                    alt="Das ist {{@con.name}}"
+                                                                                    src="{{@con.image}}"></a>
+                                                    </true>
+                                                    <false>
+                                                        <img style="width:25px;" alt="Das ist {{@con.name}}"
+                                                             src="{{@con.image}}">
+                                                    </false>
+                                                </check>
+                                            </true>
+                                            <false>
+                                                <check if="{{isset(@con.url)}}">
+                                                    <true>
+                                                        <a title="Das ist {{@con.name}}" alt="Blog von {{@con.name}}"
+                                                           href="{{@con.url}}"><img
+                                                                alt="Leider hat {{@con.name}} kein Avatar"
+                                                                style="width:25px;"
+                                                                src="{{@BASEURL}}/ext/contributors/avatar.png"></a>
+                                                    </true>
+                                                    <false>
+                                                        <img alt="Leider hat {{@con.name}} kein Avatar"
+                                                             style="width:25px;"
+                                                             src="{{@BASEURL}}/ext/contributors/avatar.png">
+                                                    </false>
+                                                </check>
+                                            </false>
+                                        </check>
+                                    </repeat>
+                                </true>
+                            </check>
+                        </div>
+                    </td>
+                </tr>
+            </repeat>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+<style>
+    article.uk-article.uk-scrollspy-init-inview.uk-scrollspy-inview.uk-animation-fade {
+        margin-bottom: 20px;
+    }
+</style>
+<br>
+<br>
+<br>
+<br>
+<br>
